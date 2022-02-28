@@ -1,0 +1,17 @@
+{
+  "name": "creandomodificandoobjetos",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "build": "babel assets/js -d dist/js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "@babel/cli": "^7.17.6",
+    "@babel/core": "^7.17.5",
+    "@babel/preset-env": "^7.16.11"
+  }
+}
