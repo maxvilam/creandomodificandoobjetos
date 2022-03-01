@@ -1,30 +1,47 @@
-/* import Consultorio from "./Consultorio.js"; */
+import Consultorio from "./Consultorio.js";
 import Paciente from "./Paciente.js";
 import { pacientes } from "./data.js";
 
 let promedioedad = 0;
 let cantidadalumnos = 0;
 
-
 function filterItems(query) {
-  return pacientes.filter(function(el) {
-      return el.nombre.toLowerCase().indexOf(query.toLowerCase()) > -1;
-  })
+  return pacientes.filter(function (el) {
+    return el.nombre.toLowerCase().indexOf(query.toLowerCase()) > -1;
+  });
 }
 
+const input = document.getElementById("buscapaciente");
+input.addEventListener("keyup", logKey);
+pacientes.forEach((paciente, i) => {
+  const DatosPacienete = new Paciente(
+    paciente.nombre,
+    paciente.edad,
+    paciente.rut,
+    paciente.diagnostico
+  );
+  DatosPacienete.listPacientes("table", i + 1);
+});
+const agregarpaciente = document.getElementById("agregarpaciente");
+agregarpaciente.addEventListener("click", cl);
 
 
-const input = document.getElementById('buscapaciente');
-input.addEventListener('keyup', logKey);
+function cl() {
+  const nombrepaciente = document.getElementById("nombrepaciente").value;
+  const edad = document.getElementById("edad").value;
+  const rut = document.getElementById("rut").value;
+  const diagnostico = document.getElementById("diagnostico").value;
+  pacientes.push({nombre: nombrepaciente, edad: edad, rut: rut, diagnostico: diagnostico});
+  logKey();
+}
+const data = document.getElementById("table");
+function limpia() {data.innerHTML = ""};
 
 function logKey() {
-  const data = document.getElementById("table");
-  data.innerHTML=""
-  const  buscapaciente = document.getElementById("buscapaciente").value;
-  console.log("Filtro:", buscapaciente)
-  const pacientesfiltrador= filterItems(buscapaciente);
-  console.log(buscapaciente)
-  console.log(pacientesfiltrador);
+  limpia();
+  /* data.innerHTML = ""; */
+  const buscapaciente = document.getElementById("buscapaciente").value;
+  const pacientesfiltrador = filterItems(buscapaciente);
   pacientesfiltrador.forEach((paciente, i) => {
     const DatosPacienete = new Paciente(
       paciente.nombre,
