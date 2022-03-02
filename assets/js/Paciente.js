@@ -37,7 +37,10 @@ export default class Paciente {
       <td>${this.edad}</td>
       <td>${this.rut}</td>
       <td>${this.diagnostico}</td>
-    </tr>;`;
+    </tr>`;
+  }
+  modificar(nombre, edad, rut, diagnostico, item){
+
   }
 }
 /* export default Paciente;  Es lo mismo */
